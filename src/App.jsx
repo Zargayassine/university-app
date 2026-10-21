@@ -1,46 +1,60 @@
 import React from 'react';
 import './App.css';
+import Header from './components/Header';
+import Navbar from './components/Navbar';
+import StudentCard from './components/StudentCard';
+import Footer from './components/Footer';
 
 function App() {
-  const etudiant = {
-    nomPrenom: "Zarga yassine",
-    email: "yzarga25@gmail.com",
-    telephone: "+216 95 245 389",
-    filiere: "Génie Logiciel et Systèmes d'Information",
-    anneeEtude: "2026-2027", 
-    groupe: "GLSI 2",
-    ville: "bekalta"
-  };
+  const etudiants = [
+    {
+      prenom: "Yassine",
+      nom: "Zarga",
+      email: "yzarga25@gmail.com",
+      telephone: "+216 95 245 389",
+      filiere: "Génie Logiciel et Systèmes d'Information",
+      anneeEtude: "2026-2027",
+      groupe: "GLSI 2",
+      ville: "Bekalta",
+      image: "unnamed.jpg"
+    },
+    {
+      prenom: "Slim",
+      nom: "Boubaker",
+      email: "slimboubaker@gmail.com",
+      telephone: "+216 99 999 999",
+      filiere: "Génie Logiciel et Systèmes d'Information",
+      anneeEtude: "2ème année",
+      groupe: "GLSI 2",
+      ville: "Mahdia",
+      image: "student.jpg"
+    },
+    {
+      prenom: "Sarra",
+      nom: "Trabelsi",
+      email: "sarra.trabelsi@gmail.com",
+      telephone: "+216 22 345 678",
+      filiere: "GLSI",
+      anneeEtude: "2ème année",
+      groupe: "GLSI 1",
+      ville: "Sousse",
+      image: "sarra.jpg"
+    }
+  ];
 
   return (
     <div className="container">
-      <div className="card">
-        <div className="profile-container">
-          <img 
-            src="unnamed.jpg" 
-            alt="Profil étudiant" 
-            className="profile-img" 
-          />
-        </div>
-
-        <h1 className="title">Fiche étudiant</h1>
-
-        <div className="fiche-details">
-          <p><span className="label">Nom & Prénom :</span> {etudiant.nomPrenom}</p>
-          <p><span className="label">Email :</span> <span className="email-text">{etudiant.email}</span></p>
-          <p><span className="label">Téléphone :</span> {etudiant.telephone}</p>
-          <p>
-            <span className="label">Filière :</span> 
-            <span className="multiline-text">{etudiant.filiere}</span>
-          </p>
-          <p><span className="label">Année d'étude :</span> {etudiant.anneeEtude}</p>
-          <p><span className="label">Groupe :</span> {etudiant.groupe}</p>
-          <p><span className="label">Ville :</span> {etudiant.ville}</p>
-        </div>
-        <button className="contact-btn">Contacter</button>
+      <Header />
+      <Navbar />
+      <h1 className="main-title">Liste des étudiants</h1>
+      <div className="cards-grid">
+        {etudiants.map((etudiant) => (
+          <StudentCard key={etudiant.email} {...etudiant} />
+        ))}
       </div>
+      <Footer />
     </div>
   );
-} 
+}
 
 export default App;
