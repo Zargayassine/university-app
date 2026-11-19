@@ -1,18 +1,70 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: #f3f4f6;
+}
+
 .container {
-  padding: 20px;
-  font-family: Arial, sans-serif;
+  padding: 30px;
 }
 
 .main-title {
   text-align: center;
-  margin: 20px 0;
-  font-size: 28px;
-  color: #333;
+  color: #1e40af;
+  margin: 30px 0;
+  font-size: 36px;
+  font-weight: bold;
 }
 
-.cards-grid {
+.actions {
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
   justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.actions input {
+  width: 250px;
+  padding: 12px;
+  border: 2px solid #dbeafe;
+  border-radius: 10px;
+  outline: none;
+  font-size: 15px;
+}
+
+.actions input:focus {
+  border-color: #2563eb;
+}
+
+.add-btn {
+  background: #2563eb;
+  color: white;}
+  .add-btn {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: white;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+  transition: all 0.3s ease;
+}
+
+.add-btn:hover {
+  background: linear-gradient(135deg, #1d4ed8, #1e40af);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.4);
+}
+
+.add-btn:active {
+  transform: scale(0.98);
 }
