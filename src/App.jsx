@@ -23,9 +23,7 @@ function App() {
     {
       prenom: "Slim",
       nom: "Boubaker",
-      email: `slim${Math.floor(
-        Math.random() * 10000
-      )}@gmail.com`,
+      email: `slim${Math.floor(Math.random() * 10000)}@gmail.com`,
       telephone: "+21699999999",
       filiere: "GLSI",
       anneeEtude: "2ème année",
@@ -37,69 +35,25 @@ function App() {
 
   const [filtre, setFiltre] = useState("");
 
-  const [etudiantAModifier, setEtudiantAModifier] =
-    useState(null);
+  const [etudiantAModifier, setEtudiantAModifier] =useState(null);
 
-  // Ajouter
-  const ajouterEtudiant = (
-    nouvelEtudiant
-  ) => {
-    setEtudiants([
-      ...etudiants,
-      {
-        ...nouvelEtudiant,
-        id: Date.now(),
-      },
-    ]);
-  };
+  const ajouterEtudiant = (nouvelEtudiant) => {setEtudiants([...etudiants,{...nouvelEtudiant,id: Date.now(),},]);};
 
-  // Supprimer
-  const supprimerEtudiant = (
-    email
-  ) => {
-    setEtudiants(
-      etudiants.filter(
-        (etudiant) =>
-          etudiant.email !== email
-      )
-    );
-  };
+  const supprimerEtudiant = (email) => {setEtudiants( etudiants.filter((etudiant) =>etudiant.email !== email ) );};
 
-  // Ouvrir le formulaire en mode modification
-  const selectionnerEtudiant = (
-    etudiant
-  ) => {
-    setEtudiantAModifier(etudiant);
-  };
+  const selectionnerEtudiant = ( etudiant) => {setEtudiantAModifier(etudiant); };
 
-  // Enregistrer les modifications
-  const enregistrerModification = (
-    etudiantModifie
-  ) => {
-    setEtudiants(
-      etudiants.map((etudiant) =>
-        etudiant.email ===
-        etudiantAModifier.email
+  const enregistrerModification = (etudiantModifie) => {setEtudiants(etudiants.map((etudiant) =>etudiant.email === etudiantAModifier.email
           ? {
-              ...etudiant,
-              ...etudiantModifie,
-            }
-          : etudiant
+              ...etudiant,...etudiantModifie,
+            } : etudiant
       )
     );
 
     setEtudiantAModifier(null);
   };
-
-  // Filtre par filière
   const etudiantsFiltres =
-    etudiants.filter((etudiant) =>
-      etudiant.filiere
-        .toLowerCase()
-        .includes(
-          filtre.toLowerCase()
-        )
-    );
+    etudiants.filter((etudiant) =>etudiant.filiere.toLowerCase().includes(filtre.toLowerCase()));
 
   return (
     <div className="container">
@@ -112,16 +66,9 @@ function App() {
       </h1>
 
       <StudentForm
-        key={
-          etudiantAModifier?.email ||
-          "nouveau"
-        }
-        onAjouterEtudiant={
-          ajouterEtudiant
-        }
-        etudiantAModifier={
-          etudiantAModifier
-        }
+        key={etudiantAModifier?.email ||"nouveau"}
+        onAjouterEtudiant={ajouterEtudiant}
+        etudiantAModifier={etudiantAModifier}
         onModifierEtudiant={(data) => {
           if (data === null) {
             setEtudiantAModifier(null);
